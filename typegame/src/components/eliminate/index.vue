@@ -1,4 +1,5 @@
 <template>
+
   <div class="lian">
     <ul class="lianUl">
       <li v-for="(item,index) in learning"
@@ -11,6 +12,7 @@
     </ul>
     <div>
       <input ref="focus"
+             readonly="readonly"
              v-model="word"
              class="butvalue"
              name="textname"
@@ -35,7 +37,6 @@
     </div>
 
   </div>
-
 
 </template>
 
@@ -68,17 +69,20 @@ export default {
   methods: {
     //开始按钮
     goli() {
-      //记录初始值时间
-      this.time = new Date().valueOf()
+      //移除文本框禁止输入的属性readonly="readonly"
+      this.$refs.focus.removeAttribute('readonly')
       //给输入框插入光标
       this.$refs.focus.focus()
       this.isgoli = false
+      //记录初始值时间
+      this.time = new Date().valueOf()
+
       //控制音乐
       this.$refs.audioed.play().catch((error) => {
         console.log(error)
       }),
           //自动播放
-          this.$refs.audioed.autoplay = true
+       this.$refs.audioed.autoplay = true
       //循环播放
       this.$refs.audioed.loop = true
 
@@ -233,7 +237,7 @@ img {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    width: 200px;
+    width: 220px;
     height: 100px;
     border-radius: 60px;
     background-color: orange;
