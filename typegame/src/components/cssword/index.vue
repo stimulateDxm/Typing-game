@@ -41,11 +41,9 @@
 </template>
 
 <script>
-// import debounce from 'lodash/debounce';
-// console.log(debounce)
 export default {
 
-  name: 'Eliminate',
+  name: 'Cssword',
   data() {
     return {
       //用时多少秒
