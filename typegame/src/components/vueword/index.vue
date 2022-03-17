@@ -12,11 +12,11 @@
     </ul>
     <div>
       <input ref="focus"
-             readonly="readonly"
              v-model="word"
              class="butvalue"
              name="textname"
              placeholder="输入上面出现的单词"
+             readonly="readonly"
              type="text"/>
       <!--      <button @click="but()">确定</button>-->
     </div>
@@ -65,6 +65,7 @@ export default {
     }
   },
   methods: {
+
     //开始按钮
     goli() {
       //移除文本框禁止输入的属性readonly="readonly"
@@ -80,7 +81,7 @@ export default {
         console.log(error)
       }),
           //自动播放
-       this.$refs.audioed.autoplay = true
+          this.$refs.audioed.autoplay = true
       //循环播放
       this.$refs.audioed.loop = true
 
@@ -91,6 +92,12 @@ export default {
       this.isgood = false
 
     },
+  },
+  mounted() {
+    //给select传数据
+    this.$bus.$on('word', data => {
+      this.learning = data
+    })
   },
   watch: {
     word: {
@@ -241,7 +248,7 @@ img {
     background-color: orange;
     opacity: 0.9;
     transform: translateX(150px) translateY(-300px);
-   //重新开始按钮
+    //重新开始按钮
     button {
       height: 50px;
       background-color: dodgerblue;
