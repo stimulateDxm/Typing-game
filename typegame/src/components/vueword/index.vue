@@ -99,6 +99,9 @@ export default {
       this.learning = data
     })
   },
+  beforeDestroy() {
+    this.$bus.$off('word')
+  },
   watch: {
     word: {
       handler() {
