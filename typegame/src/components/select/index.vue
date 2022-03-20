@@ -46,15 +46,16 @@ export default {
     wordck(e){
       if(e.target.value === "cssword"){
         //给select传数据
-        this.$bus.$emit('word',this.learningcss)
+        this.$bus.$emit('words',this.learningcss)
       }else if(e.target.value === "htmlword"){
-        this.$bus.$emit('word',this.learninghtml)
+        this.$bus.$emit('words',this.learninghtml)
       }else{
-        this.$bus.$emit('word',this.learningvue)
+        this.$bus.$emit('words',this.learningvue)
       }
     }
 
   },
+
 
 }
 
@@ -67,6 +68,9 @@ export default {
 }
 
 .home {
+  position: absolute;
+  left: 227px;
+  top: 75px;
   display: flex;
   justify-content: center;
   align-items: center;

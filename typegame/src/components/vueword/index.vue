@@ -49,7 +49,7 @@ export default {
       //用时多少秒
       time: 0,
       //结束框
-      isover: false,
+      isover:false,
       //开始按钮
       isgoli: true,
       //good标志
@@ -79,11 +79,11 @@ export default {
       //控制音乐
       this.$refs.audioed.play().catch((error) => {
         console.log(error)
-      }),
-          //自动播放
-          this.$refs.audioed.autoplay = true
-      //循环播放
-      this.$refs.audioed.loop = true
+       }),
+       //自动播放
+       this.$refs.audioed.autoplay = true
+       //循环播放
+       this.$refs.audioed.loop = true
 
     },
     //结束时再来一次按钮
@@ -94,15 +94,19 @@ export default {
     },
   },
   mounted() {
-    //给select传数据
-    this.$bus.$on('word', data => {
+    //接收select数据
+    this.$bus.$on('words', data => {
       this.learning = data
     })
   },
   beforeDestroy() {
-    this.$bus.$off('word')
+    this.$bus.$off('words')
   },
   watch: {
+    isgoli() {
+      this.$bus.$emit('isgoli',this.isgoli)
+
+    },
     word: {
       handler() {
         var len = this.learning.length
@@ -115,6 +119,7 @@ export default {
               this.itemed.push(this.word)
               //numder减一就是剩余数量
               this.num--;
+              this.$bus.$emit('num',this.num)
               //文本框清空
               this.word = '';
               //设置good标志显示
@@ -150,14 +155,15 @@ img {
   vertical-align: top;
   border: none
 }
-
+//单词最外层
 .lian {
   margin: auto;
   position: relative;
-  width: 500px;
-  height: 600px;
+  width: 470px;
+  height: 470PX;
+  border-radius: 70px;
   background-color: pink;
-
+//go标示图标
   .icon-dianzan {
     color: red;
     font-size: 70px;
@@ -185,63 +191,27 @@ img {
       margin-top: 20px;
     }
   }
-
-  .butvalue {
-    font-size: 18px;
-    opacity: 0.8;
-    position: absolute;
-    left: 20px;
-    top: 450px;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    background-color: aqua;
-    width: 230px;
-    height: 80px;
-    border: orange solid 3px;
-    border-radius: 50px;
-    text-align: center;
-  }
-
-  .lianUl {
-    width: 500px;
-    height: 500px;
-    background-color: pink;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-evenly;
-    justify-content: space-evenly;
-
-    .lianUls {
-      flex-wrap: nowrap;
-      width: 30%;
-      height: 30px;
-      line-height: 30px;
-      border: deepskyblue solid 1px;
-      border-radius: 15px;
-      display: flex;
-      justify-content: center;
-    }
-  }
-
   // 开始提示框
 
   .start {
+    position: absolute;
+    left: 177px;
+    top: 389px;
     font-size: 20px;
     text-align: center;
-    width: 150px;
-    height: 50px;
+    width: 120px;
+    height: 45px;
     line-height: 50px;
     border-radius: 50px;
-    background-color: deepskyblue;
+    background-color: dodgerblue;
     opacity: 0.9;
-    transform: translateX(180px) translateY(-279px);
-    //display: none;
   }
 
   //结束弹出框
   .overt {
+    position: absolute;
+    left: 120px;
+    top: 163px;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
@@ -250,7 +220,10 @@ img {
     border-radius: 60px;
     background-color: orange;
     opacity: 0.9;
-    transform: translateX(150px) translateY(-300px);
+    p{
+      margin-top: 15px;
+    }
+
     //重新开始按钮
     button {
       height: 50px;
@@ -260,6 +233,49 @@ img {
       color: white;
     }
   }
+  //输入框
+  .butvalue {
+    font-size: 18px;
+    opacity: 0.8;
+    position: absolute;
+    left: 20px;
+    top: 350px;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #98c4f0;
+    width: 230px;
+    height: 80px;
+    border: orange solid 3px;
+    border-radius: 50px;
+    text-align: center;
+  }
+//全部单词
+  .lianUl {
+    width: 470px;
+    height: 470px;
+    border-radius: 70px;
+    background-color: pink;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-evenly;
+  //单个单词
+    .lianUls {
+      margin-top: 20px;
+      flex-wrap: nowrap;
+      width: 28%;
+      height: 28px;
+      line-height: 30px;
+      border: deepskyblue solid 1px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+    }
+
+
+}
 }
 
 </style>
