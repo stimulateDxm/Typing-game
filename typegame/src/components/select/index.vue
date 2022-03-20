@@ -45,7 +45,7 @@ export default {
   methods: {
     wordck(e){
       if(e.target.value === "cssword"){
-        //给select传数据
+        //给select传单词数据
         this.$bus.$emit('words',this.learningcss)
       }else if(e.target.value === "htmlword"){
         this.$bus.$emit('words',this.learninghtml)
@@ -55,6 +55,7 @@ export default {
     }
 
   },
+
 
 
 }
@@ -71,6 +72,7 @@ export default {
   position: absolute;
   left: 227px;
   top: 75px;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;

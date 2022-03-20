@@ -21,7 +21,7 @@
       <!--      <button @click="but()">确定</button>-->
     </div>
     <div v-show="isgood" class="nums ">
-      <p class="pnum">还剩{{ num }}个</p>
+      <p class="pnum">已完成{{ num }}个</p>
       <span v-show="isgood" class="iconfont icon-dianzan"></span>
     </div>
     <!-- 音乐-->
@@ -55,7 +55,7 @@ export default {
       //good标志
       isgood: false,
       //单词数量
-      num: 20,
+      num: 0,
       //输入框value
       word: '',
       //新数组
@@ -117,8 +117,8 @@ export default {
             if (!this.itemed.includes(this.word)) {
               //新数组没有就是没输入过就增加当前输入的单词到新数组里
               this.itemed.push(this.word)
-              //numder减一就是剩余数量
-              this.num--;
+              //numder加一就是完成的数量
+              this.num++;
               this.$bus.$emit('num',this.num)
               //文本框清空
               this.word = '';
@@ -128,8 +128,11 @@ export default {
               setTimeout(() => {
                 this.isgood = false
               }, 800)
-              if (this.num == 0) {
-                this.isover = true
+              if (this.num == 20){
+                setTimeout(()=>{
+                  this.isover = true
+                },10)
+
               }
             }
           }

@@ -7,7 +7,7 @@
         <div class="lu-core">
 
           <div >
-            <Select v-show="!isgoli"></Select>
+            <Select v-show="isgoli"></Select>
           </div>
 <!--         打字vueword组件-->
           <div class="select-word">
@@ -23,7 +23,6 @@
 
         <div
             class="imgs-top"
-            ref="top"
             :style="{left:leftx+'px',top:topy+'px'}"
             v-show="istop"
         >
@@ -33,7 +32,6 @@
                 v-for="(item,index) in gotop"
                 :key="index"
                 :src="item"
-                class="floats"
                 v-show="n == index"
             >
           </div>
@@ -42,7 +40,6 @@
 
         <div
             class="imgs-right"
-            ref="right"
             :style="{left:leftx+'px',top:topy+'px'}"
             v-if="isright"
         >
@@ -52,7 +49,6 @@
                 v-for="(item,index) in goright"
                 :key="index"
                 :src="item"
-                class="floats"
                 v-show="n == index"
             >
           </div>
@@ -61,7 +57,6 @@
 
         <div
             class="imgs-bottom"
-            ref="bottom"
             :style="{left:leftx+'px',top:topy+'px'}"
             v-if="isbottom"
         >
@@ -71,7 +66,6 @@
                 v-for="(item,index) in gobottom"
                 :key="index"
                 :src="item"
-                class="floats"
                 v-show="n == index"
             >
           </div>
@@ -80,7 +74,6 @@
 
         <div
             class="imgs-left"
-            ref="left"
             :style="{left:leftx+'px',top:topy+'px'}"
             v-if="isleft"
         >
@@ -90,7 +83,6 @@
                 v-for="(item,index) in goleft"
                 :key="index"
                 :src="item"
-                class="floats"
                 v-show="n == index"
             >
           </div>
@@ -178,7 +170,7 @@ export default {
       //接收到输入的单词数量
       num:0,
       //定义开始按钮
-      isgoli:null
+      isgoli:true
     }
   },
   methods: {
@@ -193,22 +185,27 @@ export default {
     },
       gos(){
         this.timer1=setInterval(()=>{
+          //向右移动
           this.leftx ++
+
           if(this.leftx >= 550){
             this.leftx=550
             this.istop=false
             this.isright=true
+                //向下移动
             this.topy ++
             if(this.topy >= 550){
               this.topy = 550
               setInterval(()=>{
                 this.isright=false
                 this.isbottom=true
+              //向左移动
                 this.leftx --
                 if(this.leftx <= 0) {
                   this.leftx = 0
                   this.isbottom=false
                   this.isleft=true
+                  //向上移动
                   this.topy --
                   if (this.topy <= 0) {
                     this.topy = 0
@@ -252,7 +249,6 @@ watch: {
       this.isgoli = data
 
     })
-   console.log(this.num ,this.isgoli)
   },
 
   beforeDestroy() {
@@ -275,7 +271,6 @@ watch: {
   top: 0;
   width: 80px;
   height: 80px;
-  position: absolute;
 }
 
 //外层大小
@@ -307,12 +302,6 @@ watch: {
       background-color: pink;
       border-radius: 70px
 
-      //城市图
-      .select-word {
-        width: @-hundred;
-        height: @-hundred;
-
-      }
     }
   }
 
@@ -333,24 +322,16 @@ watch: {
       .imgs-right {
         .goren;
 
-        .big-right {
-
-        }
       }
         //小人物下边
         .imgs-bottom {
           .goren;
 
-          .big-bottom {
-
-          }
         }
           //小人物左边
           .imgs-left {
             .goren;
 
-            .big-left {
-            }
           }
 
         }
