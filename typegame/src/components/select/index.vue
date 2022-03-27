@@ -26,7 +26,8 @@ export default {
   name: 'Select',
   data() {
     return {
-      learninghtml: ['submit', 'radio', 'checkbox', 'reset', 'textarea', 'label', 'object', 'param', 'archive', 'audio', 'source', 'video', 'props', 'main', 'section', 'article', 'nav', 'Canvas', 'autocomplete', ' iframe'],
+      learning0:['a','b','c','d','e','f','z','l','o','p','q','r','s','t','u','v','w','h','i','j'],
+      learninghtml: ['submit', 'radio', 'checkbox', 'reset', 'textarea', 'label', 'object', 'param', 'archive', 'audio', 'source', 'video', 'props', 'main', 'section', 'article', 'nav', 'Canvas', 'autocomplete', 'iframe'],
       learningcss: ['stretch', 'space-between', 'space-evenly', 'border-radius', 'flex-direction', 'autoplay', 'nowrap', 'row-reverse', 'column', 'column-reverse', 'flex-wrap', 'wrap', 'wrap-reverse', 'justify-content', 'align-items', 'align-self', 'align-content', 'flex-grow', 'flex-shrink', 'flex-basis'],
       learningvue: ['component', 'router', 'path', 'router-view', 'router-link', 'template', 'store', 'actions', 'mutations', 'state', 'getters', 'dispatch', 'props', 'nextTick', 'beforeDestroy', 'beforeCreate', 'mounted', 'scoped', 'directive', 'methods'],
       //选择下拉框
@@ -39,7 +40,11 @@ export default {
       }, {
         value: "选项3",
         item: "vueword"
-      },]
+      },{
+        value: "选项4",
+        item: "测试"
+      },
+      ]
     }
   },
   methods: {
@@ -49,8 +54,10 @@ export default {
         this.$bus.$emit('words',this.learningcss)
       }else if(e.target.value === "htmlword"){
         this.$bus.$emit('words',this.learninghtml)
-      }else{
+      }else if(e.target.value === "vueword"){
         this.$bus.$emit('words',this.learningvue)
+      }else {
+        this.$bus.$emit('words',this.learning0)
       }
     }
 
