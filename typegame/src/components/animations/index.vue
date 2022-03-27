@@ -5,6 +5,9 @@
       <div class="lu-outer">
         <!-- 道路内层 -->
         <div class="lu-core">
+          <div class="update" @click="again">
+            <span>重新<br>开始</span>
+          </div>
 
           <div>
             <Select v-show="isgoli"></Select>
@@ -41,7 +44,8 @@
             <div v-show="isgoli" ref="starts" class="start" @click="goli()">开始</div>
             <!--    结束弹出框-->
             <div v-show="isover" class="overt">
-              <p v-text="`恭喜你捉住了小偷,用时(${Math.floor((new Date().valueOf()-this.time)/1000)})秒`"></p>
+              <p  v-if="istext"  v-text="`恭喜你捉住了小偷,用时(${Math.floor((new Date().valueOf()-this.time)/1000)})秒`"></p>
+              <p v-if="!istext" v-text="`你失败了，没捉住小偷`"></p>
               <button @click="again()">再来一次</button>
             </div>
 
@@ -164,6 +168,8 @@ export default {
   components: {Select},
   data() {
     return {
+      //结束弹出的文字内容
+      istext:true,
       //用时多少秒
       time: 0,
       //结束框
@@ -260,8 +266,19 @@ export default {
     },
     //结束时再来一次按钮
     again() {
-          //用时多少秒
-          this.time= 0
+      clearInterval(this.timer1)
+      clearInterval(this.timer2)
+      clearInterval(this.timer3)
+      clearInterval(this.timer4)
+      clearInterval(this.timer5)
+         //选择类型
+         this.isgoli=true
+         //开始按钮
+         this.isgo=true
+          //结束弹出的文字内容
+          this.istext=true
+          //重新记录初始值时间
+          this.time = new Date().valueOf()
           //结束框
           this.isover= false
           //good标志
@@ -272,7 +289,7 @@ export default {
           this.word= ''
           //新数组
           this.itemed= []
-          //用于切换不能方向的小人
+          //用于切换不同方向的小人
           this.istop= true
           this.isright= false
           this.isbottom= false
@@ -288,10 +305,7 @@ export default {
           this.leftxx= 80
           //小偷向上下方向运动
            this.topyy= 0
-           this.goxxyy()
-        if (this.topyy === 550 && this.leftxx === 550) {
-          this.goxxyy2()
-        }
+
 
 
     },
@@ -353,7 +367,7 @@ export default {
 
           }
         }
-      }, 15)
+      }, 19)
 
 
     },
@@ -406,11 +420,14 @@ export default {
     },
     //在点击开始按钮时小偷开始跑步
     isgoli() {
-      this.goxxyy()
+      if(!this.isgoli){
+        this.goxxyy()
+      }
+
 
     },
     topyy() {
-      if (this.topyy === 550 && this.leftxx === 550) {
+      if (this.topyy === 550 && this.leftxx === 550 ) {
         this.goxxyy2()
       }
     },
@@ -452,7 +469,7 @@ export default {
 
   },
   updated() {
-    if ((this.topyy - this.topy === 30 && this.leftx === this.leftxx) || (this.leftxx - this.leftx === 30 && this.topy === this.topyy)) {
+    if ((this.topyy - this.topy === 30 && this.leftx === this.leftxx && this.leftx !==0) || (this.leftxx - this.leftx === 30 && this.topy === this.topyy )) {
       clearInterval(this.timer4)
       clearInterval(this.timer3)
       clearInterval(this.timer2)
@@ -465,6 +482,21 @@ export default {
       this.timer4 = null
       this.timer5 = null
       this.isover = true
+    }
+    if(this.topyy===0 && this.leftxx===0){
+      clearInterval(this.timer4)
+      clearInterval(this.timer3)
+      clearInterval(this.timer2)
+      clearInterval(this.timer1)
+      clearInterval(this.timer5)
+      //清空所有定时器
+      this.timer1 = null
+      this.timer2 = null
+      this.timer3 = null
+      this.timer4 = null
+      this.timer5 = null
+      this.isover = true
+      this.istext=false
     }
   },
 }
@@ -514,6 +546,20 @@ export default {
       //border: 1px solid orange;
       background-color: pink;
       border-radius: 70px;
+      //选择重新输入的类型重新开始
+      .update{
+        position: absolute;
+        background-color: #ecf00c;
+        left: 134px;
+        top: 474px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        z-index: 1;
+        text-align: center;
+        padding-top: 8px;
+        font-size: 12px;
+      }
       //单词最外层
       .lian {
         margin: auto;
