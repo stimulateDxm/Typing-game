@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ww">
     <div class="w">
       <!-- 道路外层 -->
       <div class="lu-outer">
@@ -525,7 +525,20 @@ export default {
 .froms(@x1:0px,@y1:0px) {
   transform: translateX(@x1) translateY(@y1);
 }
+//最外层居中
+.ww{
+  display: flex;
+  justify-content: center;
+}
+//手机端
+@media screen and (max-width: 500px) {
 
+
+  .ww{
+    transform: scale(0.6);
+    margin: auto 0;
+  }
+}
 .w {
   position: relative;
   //外层
