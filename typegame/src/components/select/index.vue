@@ -6,14 +6,15 @@
         <div class="selects">
           选择你想练习单词类型
         </div>
-        <select class="words" @click="wordck">
-          <option
+        <ul class="words" @click="wordck">
+          <li
+              @click="wordck()"
               v-for="item in options"
               :key="item.value"
 
           >{{ item.item }}
-          </option>
-        </select>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
