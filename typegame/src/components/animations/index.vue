@@ -469,7 +469,12 @@ export default {
 
   },
   updated() {
-    if ((this.topyy - this.topy === 30 && this.leftx === this.leftxx && this.leftx !==0) || (this.leftxx - this.leftx === 30 && this.topy === this.topyy )) {
+    if ((this.topyy - this.topy === 30 && this.leftx === this.leftxx  )
+        || (this.leftxx - this.leftx === 30 && this.topy === this.topyy && this.topyy === 0)
+        ||( this.topyy !==0 && this.topy -this.topyy ===30 &&this.leftx === this.leftxx)
+        || (this.leftx - this.leftxx === 30 && this.topy === this.topyy && this.topyy === 550)
+
+    ) {
       clearInterval(this.timer4)
       clearInterval(this.timer3)
       clearInterval(this.timer2)
@@ -483,6 +488,7 @@ export default {
       this.timer5 = null
       this.isover = true
     }
+
     if(this.topyy===0 && this.leftxx===0){
       clearInterval(this.timer4)
       clearInterval(this.timer3)

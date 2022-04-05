@@ -4,14 +4,12 @@
     <div class="home">
       <div class="router">
         <div class="selects">
-          选择你想练习单词类型
+          选择类型
         </div>
         <ul class="words" @click="wordck">
           <li
-              @click="wordck()"
               v-for="item in options"
               :key="item.value"
-
           >{{ item.item }}
           </li>
         </ul>
@@ -27,7 +25,7 @@ export default {
   name: 'Select',
   data() {
     return {
-      learning0:['a','b','c','d','e','f','z','l','o','p','q','r','s','t','u','v','w','h','i','j'],
+      // learning0:['a','b','c','d','e','f','z','l','o','p','q','r','s','t','u','v','w','h','i','j'],
       learninghtml: ['submit', 'radio', 'checkbox', 'reset', 'textarea', 'label', 'object', 'param', 'archive', 'audio', 'source', 'video', 'props', 'main', 'section', 'article', 'nav', 'Canvas', 'autocomplete', 'iframe'],
       learningcss: ['stretch', 'space-between', 'space-evenly', 'border-radius', 'flex-direction', 'autoplay', 'nowrap', 'row-reverse', 'column', 'column-reverse', 'flex-wrap', 'wrap', 'wrap-reverse', 'justify-content', 'align-items', 'align-self', 'align-content', 'flex-grow', 'flex-shrink', 'flex-basis'],
       learningvue: ['component', 'router', 'path', 'router-view', 'router-link', 'template', 'store', 'actions', 'mutations', 'state', 'getters', 'dispatch', 'props', 'nextTick', 'beforeDestroy', 'beforeCreate', 'mounted', 'scoped', 'directive', 'methods'],
@@ -41,33 +39,25 @@ export default {
       }, {
         value: "选项3",
         item: "vueword"
-      },{
-        value: "选项4",
-        item: "测试"
       },
       ]
     }
   },
   methods: {
     wordck(e){
-      if(e.target.value === "cssword"){
+      if(e.target.innerText === "cssword"){
         //给select传单词数据
         this.$bus.$emit('words',this.learningcss)
-      }else if(e.target.value === "htmlword"){
+      }else if(e.target.innerText === "htmlword"){
         this.$bus.$emit('words',this.learninghtml)
-      }else if(e.target.value === "vueword"){
+      }else if(e.target.innerText === "vueword"){
         this.$bus.$emit('words',this.learningvue)
-      }else {
-        this.$bus.$emit('words',this.learning0)
       }
     }
 
   },
 
-
-
 }
-
 
 </script>
 <style lang="less" scoped>
@@ -87,7 +77,7 @@ export default {
 
   .router {
 
-    background-color: #07b1ee;
+    background-color: #a6d6e8;
     width: 200px;
     border-radius: 1px;
 
@@ -97,6 +87,9 @@ export default {
       li {
         border: 1px solid gray;
         border-radius: 5px;
+        &:hover{
+          background-color: white;
+        }
       }
     }
 
@@ -110,6 +103,7 @@ export default {
 
     .selects {
       color: #121212;
+      text-align: center;
     }
   }
 }
