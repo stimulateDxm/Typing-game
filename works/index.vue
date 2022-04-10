@@ -117,11 +117,8 @@ ul li img {
   position: absolute;
   left: 0;
   top: 0;
-  opacity: 0;
 }
-ul .frist img {
-  opacity: 1;
-}
+
 img {
   width: 400px;
   height: 400px;
@@ -153,14 +150,12 @@ ol li:hover {
   position: absolute;
   display: flex;
   flex-wrap: nowrap;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 33%;
   top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #didi li {
+ 
   width: 15px;
   height: 15px;
   border-radius: 50%;
