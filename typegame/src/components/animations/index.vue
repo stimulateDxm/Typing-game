@@ -469,7 +469,7 @@ export default {
 
   },
   updated() {
-    if ((this.topyy - this.topy === 30 && this.leftx === this.leftxx  )
+    if ((this.topyy - this.topy === 30 && this.leftx === this.leftxx && this.leftx !==0 )
         || (this.leftxx - this.leftx === 30 && this.topy === this.topyy && this.topyy === 0)
         ||( this.topyy !==0 && this.topy -this.topyy ===30 &&this.leftx === this.leftxx)
         || (this.leftx - this.leftxx === 30 && this.topy === this.topyy && this.topyy === 550)
@@ -672,9 +672,9 @@ export default {
           background-color: #98c4f0;
           width: 230px;
           height: 80px;
-          border: orange solid 3px;
           border-radius: 50px;
           text-align: center;
+
         }
 
         //全部单词
