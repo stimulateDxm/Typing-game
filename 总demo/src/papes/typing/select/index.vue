@@ -64,6 +64,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 
 .home {
@@ -77,7 +78,7 @@ export default {
 
   .router {
 
-    background-color: #a6d6e8;
+    background-color: #aeedd8;
     width: 200px;
     border-radius: 1px;
 

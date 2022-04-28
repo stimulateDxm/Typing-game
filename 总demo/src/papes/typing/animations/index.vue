@@ -514,6 +514,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 .goren {
@@ -531,10 +532,12 @@ export default {
 .froms(@x1:0px,@y1:0px) {
   transform: translateX(@x1) translateY(@y1);
 }
-//最外层居中
+//最外层
 .ww{
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 200px;
+  transform: scale(0.9);
 }
 //手机端
 @media screen and (max-width: 500px) {

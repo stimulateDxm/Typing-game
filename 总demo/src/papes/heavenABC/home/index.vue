@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style lang="css" >
+<style lang="css"  scoped>
 * {
   margin: 0;
   padding: 0;

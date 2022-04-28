@@ -88,6 +88,7 @@ export default {
 *{
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 @media screen and (max-width: 500px) {
   body {

@@ -47,10 +47,21 @@ export default {
 </script>
 
 <style scoped>
+
 li{
+  list-style: none;
   position: absolute;
   top: -50px;
   left: 0;
+  width: 45px;
+  height: 45px;
+  background-image: radial-gradient(50% 50%, #fefefe, #72a4ef);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+
+
 }
 
 </style>

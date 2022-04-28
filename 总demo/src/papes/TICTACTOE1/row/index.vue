@@ -41,10 +41,11 @@ export default {
   margin: 0;
   padding:0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 .row{
-  background-color: orange;
+  background-color: #aeedd8;
   width: 100px;
   height: 100px;
   border: 1px solid black;
