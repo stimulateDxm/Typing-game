@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    
+    <div id="root">
+     
+    </div>
+
+    <script>
+        let number=19;
+      let person={
+          name:'张三',
+          sex:'男',
+        //   age:18
+      }
+    //  age不可枚举 
+      Object.defineProperty(person,'age',{
+        //   value:18,
+        // //   控制属性是否可以枚举，默认是false不可以枚举
+        //   enumerable:true,
+        // //   控制属性是否可以被修改,默认是false
+        //   writable:true,
+        // //   控制属性是否被删除,默认是false
+        // configurable:true
+
+        // 当有有读取person的age属性时，get函数(getter)就会被调用，且返回什就是age的值
+        get() {
+            console.log('有人读取age属性了')
+           return number 
+        },
+        // 当有人修改person的age属性时，set函数(setter)就会被调用，且会收修改的具体值
+        set(value){
+            console.log('有人修改了age属性，且值是',value)
+        }
+
+      })
+      console.log(person)
+    //   Object.keys()把对象里面所有属性名提取为一个数组
+      console.log(Object.keys(person))
+    </script>
+</body>
+
+</html>

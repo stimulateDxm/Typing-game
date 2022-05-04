@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>{{msg}}</h2>
+        <app></app>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+
+        
+        
+            
+
+        const school =vue.extend({
+
+            template: `
+            <div>
+               <h2>{{sname}}</h2>
+               <h2>{{address}}</h2>
+               
+            </div> 
+            `,
+            data() {
+                return {
+                    sname: "尚硅谷",
+                    address: "北京"
+
+                }
+            },
+          
+        })
+     
+        const app=vue.extend({
+            template:`
+            <div>
+                <school></school>
+            </div>
+            
+            `,
+            components:{
+                school
+            }
+        })
+
+        new Vue({
+            el: '#root',
+            data: {
+                msg: "欢迎来学习Vue",
+            },
+            components: {
+               app
+            }
+        })
+    </script>
+</body>
+
+</html>

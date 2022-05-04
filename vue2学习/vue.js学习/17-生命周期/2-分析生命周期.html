@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2 >当前的n值是：{{n}} </h2>
+        <button @click='n++'>  点我</button>
+    </div>
+    <script>
+        Vue.config.productionTip=false
+        new Vue({
+            el:"#root",
+
+            data:{
+               n:1
+            },
+            
+        //   template:`
+        //     <div>
+            //  <h2 >当前的n值是：{{n}} </h2>
+        // <button @click='n++'>  点我</button>
+        //  </div>`,
+            // Vue完成模板的解析并把初始的真实DOM元素入入页面后（挂载完毕）调用mounted
+         beforeCreate(){
+            //  数据代理还未开始没有-data
+             console.log("beforeCreate")
+            //  debugger;
+         },
+         created(){
+            //  数据代理开始,有-data
+            console.log("created")
+            // debugger;
+         },
+        //  未经Vue编译
+         beforeMount(){
+             console.log('befoemount',this)
+             debugger;
+            
+         },
+         
+
+            
+        })
+      
+    </script>
+</body>
+</html>

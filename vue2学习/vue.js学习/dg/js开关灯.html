@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #cib {
+        width: 800px;
+        height: 800px;
+        background-color: black;
+
+    }
+</style>
+
+<body>
+    <button id="guankai">关灯</button>
+    <div id="cib">
+        <div>
+
+        </div>
+    </div>
+    <script>
+        let guankai = document.querySelector('#guankai');
+        let cib = document.querySelector('#cib')
+
+        guankai.addEventListener('click', function () {
+            console.log('111')
+            console.log(guankai.innerHTML)
+            if (guankai.innerHTML == "开灯") {
+                cib.style.background = '#000';
+                guankai.innerHTML = "关灯"
+            } else {
+                cib.style.background = '#FFF';
+                guankai.innerHTML = "开灯"
+            }
+        })
+
+    </script>
+</body>
+
+</html>

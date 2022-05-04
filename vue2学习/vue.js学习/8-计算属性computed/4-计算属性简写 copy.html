@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        姓：<input type="text" v-model='firtName'><br>
+        名：<input type="text" v-model='lastName'><br>
+        全名：<span>{{fullName}}</span>
+        ：<input type="text" v-model='fullName'><br>
+    </div>
+  
+    <script >
+         Vue.config.productionTip = false
+        let vm=new Vue({
+            el:"#root",
+            data:{
+             firtName:'张',
+             lastName:'三'
+            },
+           
+            computed:{
+                // fullName:{
+                // // get有什么作用？当有人读取fullName时，get就会被调用
+                // //且返回值就作为fullName的值
+                // // get什么时候调用？1.初次读取fullName时，2所依赖的数据发生变化时
+            
+                //     get(){
+                //         return this.firtName+'-'+this.lastName
+                //     },
+                //     // // set什么时候被调用 ？当fullName被修改时
+                //     set(value){
+                //      const arr=value.split('-')
+                //      this.firtName=arr[0]
+                //      this.lastName=arr[1]
+
+                //     }
+                // }
+
+                // 不考虑修改时的简写
+                fullName()
+                {
+                        return this.firtName+'-'+this.lastName
+                 }
+            }
+            
+        })
+    </script>
+</body>
+</html>

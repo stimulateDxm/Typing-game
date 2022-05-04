@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 编写组件标签-->
+        <xuexiao></xuexiao>
+        <hr>
+        <xuesheng></xuesheng>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        // 创建组件
+        const school = Vue.extend({
+            template: `
+            <div>
+               <h2>学校名称：{{schoolname }} </h2>
+               <h2>学校地址：{{address}}</h2>
+               <button @click="showName">点我提示学校名</button>
+            </div>
+            `,
+            data() {
+                return {
+                    schoolname: "尚硅谷",
+                    address: "北京",
+                }
+
+            },
+            methods:{
+                showName(){
+                    alert(this.schoolname)
+                }
+            }
+
+        })
+        const student = Vue.extend({
+            template: `
+            <div>
+                <h2>学生名称：{{ studentName}}</h2>
+                <h2>学生年龄：{{ age}}</h2>
+            </div>
+            `,
+            data() {
+                return {
+                    studentName: '张三',
+                    age: 18,
+
+                }
+
+            }
+
+        })
+    //  Vue.component('school',school)全局注册组件写法
+    //    Vue.component('school',school)
+        new Vue({
+            el: "#root",
+            // 注册组件（局部注册）
+            components: {
+                xuexiao: school,
+                xuesheng: student,
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 一个细胞，一小时分解一次细胞，三小时结束生命周期，n小时后有多少个细胞
+        function digui(n){
+            if (n === 0) {
+                return 1
+            } else if (n === 1 || n === 2) {
+                return  n * 2;
+            } else if(n===3){
+                return 7
+            }
+            else {
+                // console.log(digui(n - 1), digui(n - 4))
+                return   2 * digui(n - 1) - digui(n - 4)
+            }
+
+        }
+        document.write(digui(7))
+    </script>
+</body>
+</html>

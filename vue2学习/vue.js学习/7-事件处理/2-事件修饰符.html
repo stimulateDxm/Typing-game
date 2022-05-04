@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+        #idom {
+            margin: 20px;
+            background-color: pink;
+            width: 300px;
+            height: 80px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="root">
+        <h2>欢迎来到{{name}}学习</h2>
+        <!-- a链接默认有跳转行为  .prevent:阻止默认事件-->
+        <a href="http://www.atguigu.com" @click.prevent='showInfo'>点我提示信息</a>
+        <div id="idom" @click='showInfo'>
+            <button @click.stop='showInfo'>点我提示信息 </button>
+           
+        </div>
+        <button @click.once='showInfo'>点我提示信息 </button>
+        </div>
+    </div>
+   
+    <!-- vue中的事件修饰符：
+       1.prevent:阻止默认事件（常用）
+       2.stop:阻止事件冒泡（常用）
+       3.once:事件只触是一次（常用）
+       4.capture:使用事件的捕获模式；
+       5.self:只有event.target是当前操作的元素是才触发事件；
+       6.passive:事件的默认行为立即执行，无需等待事件回调执行完毕 -->
+    <script>
+        // 阻止 vue在启动时生成生产提示
+        Vue.config.productionTip = false
+        // 创建Vue实例
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '尚硅谷'
+            },
+            methods: {
+                showInfo(e) {
+                    // e.preventDefault();阻止默认事件
+                    alert('同学你好');
+                },
+
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>

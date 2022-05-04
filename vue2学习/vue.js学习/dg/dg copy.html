@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function forItem(forCount,count,stop){
+            // 到底返回
+            if(forCount===0){
+                return count;
+            }
+            // 打印用
+            let itme=count;
+            if(stop<0){
+                //小于3小时不死
+                count=count*2;
+                stop++;
+            }else if(stop===0){
+                // 开始死
+             stop=1;
+             count=(count-stop)*2
+            }else{
+                // 其他死
+                stop=stop*2
+                count=(count-stop)*2;
+            }
+            let a=11-forCount;
+            console.log(`第${a}次，当前细胞为：${itme}，分裂为：${count},步长为${stop}`)
+             forCount--;
+             return forItem(forCount,count,stop)
+        }
+        forItem(5,1,1)
+    </script>
+</body>
+</html>

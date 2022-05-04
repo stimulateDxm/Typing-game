@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    
+    <div id="root">
+     <h2>欢迎来到{{name}}学习</h2>
+     <button v-on:click="showInfo1">点我提示信息(不传参)</button>
+     <button @click="showInfo2(66,$event)">点我提示信息(传参）</button>
+    </div>
+
+    <script>
+        // 阻止 vue在启动时生成生产提示
+        Vue.config.productionTip = false
+        // 创建Vue实例
+        const vm =new Vue({ 
+            // 第一种写法
+            el:'#root',
+            data:{
+               name:'尚硅谷'
+            },
+            methods:{
+                showInfo1(event){
+                    // event.target获取触发特定事件的元素
+                //   console.log(event.target.innerText)  
+                // console.log(this)此处的this是vm
+                    alert('1')
+                },
+                showInfo2(number,a){
+                    // event.target获取触发特定事件的元素
+                //   console.log(event.target.innerText)  
+                // console.log(this)此处的this是vm
+                    alert(number,a)
+                }
+            }
+           
+        })
+       
+
+    </script>
+</body>
+
+</html>
